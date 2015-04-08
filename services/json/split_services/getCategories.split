@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pxsObject>
+    <appSmsCode></appSmsCode>
+    <plainxmlservice>
+        <authenticationMode>basic</authenticationMode>
+        <cacheduration></cacheduration>
+        <cacheable>false</cacheable>
+        <dataprovider></dataprovider>
+        <dcResponse/>
+        <encryptPwd>true</encryptPwd>
+        <escapeXML>false</escapeXML>
+        <group>BestBuy</group>
+        <httpmethod>GET</httpmethod>
+        <id>getCategories</id>
+        <identityProvider></identityProvider>
+        <identityProviderName></identityProviderName>
+        <ignoreProxy>false</ignoreProxy>
+        <inparam>
+            <category></category>
+            <datatype>string</datatype>
+            <defaultvalue></defaultvalue>
+            <description></description>
+            <encode>true</encode>
+            <format>None</format>
+            <formatvalue></formatvalue>
+            <id>category_id</id>
+            <invalue></invalue>
+            <name></name>
+            <order></order>
+            <passNull>false</passNull>
+            <recordid></recordid>
+            <smsname></smsname>
+            <source></source>
+            <srcformatvalue></srcformatvalue>
+            <target></target>
+            <targetdatatype></targetdatatype>
+            <testvalue>cat00000</testvalue>
+            <value></value>
+        </inparam>
+        <intemplate></intemplate>
+        <ntlmDomain></ntlmDomain>
+        <ntlmHost></ntlmHost>
+        <outtemplate>{
+   "canonicalUrl": "/v1/categories(id=\"cat00000\")?format=json&amp;apiKey=9cvgm7dxmx86nea533tkz7ed",
+   "categories": [{
+      "active": true,
+      "id": "cat00000",
+      "name": "Best Buy",
+      "path": [{
+         "id": "cat00000",
+         "name": "Best Buy"
+      }],
+      "subCategories": [
+         {
+            "id": "abcat0100000",
+            "name": "TV &amp; Home Theater"
+         },
+         {
+            "id": "abcat0200000",
+            "name": "Audio"
+         },
+         {
+            "id": "abcat0300000",
+            "name": "Car Electronics &amp; GPS"
+         },
+         {
+            "id": "abcat0400000",
+            "name": "Cameras &amp; Camcorders"
+         },
+         {
+            "id": "abcat0500000",
+            "name": "Computers &amp; Tablets"
+         },
+         {
+            "id": "pcmcat311300050017",
+            "name": "Video Games, Movies &amp; Music"
+         },
+         {
+            "id": "abcat0600000",
+            "name": "Movies &amp; Music"
+         },
+         {
+            "id": "abcat0700000",
+            "name": "Video Games"
+         },
+         {
+            "id": "abcat0800000",
+            "name": "Cell Phones"
+         },
+         {
+            "id": "pcmcat312300050015",
+            "name": "Home &amp; Office"
+         },
+         {
+            "id": "abcat0900000",
+            "name": "Appliances"
+         },
+         {
+            "id": "pcmcat242800050021",
+            "name": "Health, Fitness &amp; Beauty"
+         },
+         {
+            "id": "cat09000",
+            "name": "Best Buy Gift Cards"
+         },
+         {
+            "id": "pcmcat193400050004",
+            "name": "Corporate Gift Cards"
+         },
+         {
+            "id": "abcat0010000",
+            "name": "Gift Ideas"
+         },
+         {
+            "id": "pcmcat128500050004",
+            "name": "Name Brands"
+         },
+         {
+            "id": "pcmcat44800050004",
+            "name": "Reward Zone"
+         },
+         {
+            "id": "pcmcat133200050003",
+            "name": "Best Buy News"
+         },
+         {
+            "id": "pcmcat138100050018",
+            "name": "Geek Squad"
+         },
+         {
+            "id": "pcmcat139900050002",
+            "name": "Magnolia Home Theater"
+         },
+         {
+            "id": "pcmcat140700050010",
+            "name": "Special Sale"
+         },
+         {
+            "id": "pcmcat140900050011",
+            "name": "Top-Rated Products"
+         },
+         {
+            "id": "pcmcat142300050026",
+            "name": "Best Buy Outlet"
+         },
+         {
+            "id": "pcmcat144600050035",
+            "name": "More Categories"
+         },
+         {
+            "id": "pcmcat128800050004",
+            "name": "Reviews &amp; Ratings"
+         },
+         {
+            "id": "pcmcat149500050013",
+            "name": "Best Buy Racing"
+         },
+         {
+            "id": "pcmcat156400050050",
+            "name": "Partsearch"
+         },
+         {
+            "id": "pcmcat230900050001",
+            "name": "Best Buy For Business"
+         },
+         {
+            "id": "pcmcat245100050028",
+            "name": "Office"
+         },
+         {
+            "id": "pcmcat248700050021",
+            "name": "Home"
+         },
+         {
+            "id": "pcmcat87800050001",
+            "name": "Customer Service"
+         },
+         {
+            "id": "pcmcat253600050018",
+            "name": "e Gift Cards"
+         },
+         {
+            "id": "abcat0207000",
+            "name": "Musical Instruments"
+         },
+         {
+            "id": "pcmcat164600050001",
+            "name": "Featured Offers"
+         },
+         {
+            "id": "pcmcat145100050000",
+            "name": "Batteries &amp; Power"
+         },
+         {
+            "id": "pcmcat332000050000",
+            "name": "Wearable Technology"
+         }
+      ]
+   }],
+   "currentPage": 1,
+   "from": 1,
+   "partial": false,
+   "queryTime": "0.007",
+   "to": 1,
+   "total": 1,
+   "totalPages": 1,
+   "totalTime": "0.595"
+}</outtemplate>
+        <outTemplateHeader>Server: thin 1.6.1 codename Death Proof
+X-Mashery-Responder: prod-j-worker-lax-04.mashery.com
+Content-Length: 3825
+Date: Tue, 07 Apr 2015 07:50:40 GMT
+Content-Type: application/json; charset=UTF-8
+</outTemplateHeader>
+        <outparam>
+            <category></category>
+            <datatype>string</datatype>
+            <defaultvalue></defaultvalue>
+            <description></description>
+            <encode>true</encode>
+            <format>None</format>
+            <formatvalue></formatvalue>
+            <id>categories</id>
+            <invalue></invalue>
+            <name></name>
+            <order></order>
+            <passNull>false</passNull>
+            <recordid></recordid>
+            <smsname></smsname>
+            <source>//categories/subCategories</source>
+            <srcformatvalue></srcformatvalue>
+            <target>response</target>
+            <targetdatatype></targetdatatype>
+            <testvalue></testvalue>
+            <value></value>
+        </outparam>
+        <outparam>
+            <category></category>
+            <datatype>string</datatype>
+            <defaultvalue></defaultvalue>
+            <description></description>
+            <encode>true</encode>
+            <format>None</format>
+            <formatvalue></formatvalue>
+            <id>id</id>
+            <invalue></invalue>
+            <name></name>
+            <order></order>
+            <passNull>false</passNull>
+            <recordid></recordid>
+            <smsname></smsname>
+            <source>id</source>
+            <srcformatvalue></srcformatvalue>
+            <target></target>
+            <targetdatatype></targetdatatype>
+            <testvalue></testvalue>
+            <value>categories</value>
+        </outparam>
+        <outparam>
+            <category></category>
+            <datatype>string</datatype>
+            <defaultvalue></defaultvalue>
+            <description></description>
+            <encode>true</encode>
+            <format>None</format>
+            <formatvalue></formatvalue>
+            <id>name</id>
+            <invalue></invalue>
+            <name></name>
+            <order></order>
+            <passNull>false</passNull>
+            <recordid></recordid>
+            <smsname></smsname>
+            <source>name</source>
+            <srcformatvalue></srcformatvalue>
+            <target>response</target>
+            <targetdatatype></targetdatatype>
+            <testvalue></testvalue>
+            <value>categories</value>
+        </outparam>
+        <password></password>
+        <postclassname></postclassname>
+        <preclassname></preclassname>
+        <proxyname></proxyname>
+        <proxyport></proxyport>
+        <proxypwd></proxypwd>
+        <proxyuserid></proxyuserid>
+        <responseencoding>UTF-8</responseencoding>
+        <smscode></smscode>
+        <smsenabled>false</smsenabled>
+        <timeout></timeout>
+        <url>http://api.remix.bestbuy.com/v1/categories(id=$category_id)?format=json&amp;apiKey=9cvgm7dxmx86nea533tkz7ed</url>
+        <urlprovider></urlprovider>
+        <userid></userid>
+    </plainxmlservice>
+</pxsObject>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application id="KonyFramework" name="KonyFramework">
+    <container isflex="false" displayname="Form" id="formAbout" type="form"/>
+    <container isflex="false" displayname="Form" id="formHome" type="form"/>
+    <container isflex="false" displayname="Form" id="formInfo" type="form"/>
+    <globalsequences/>
+    <skins/>
+</application>
