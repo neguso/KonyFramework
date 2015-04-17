@@ -14,7 +14,45 @@ toolkit.module('app', ['kony'])
 
 		$scope.on('init', function(eventobject) {
 
-			$scope.form.labelMessage.text = $scope.message;
+
+			function Model() // implements INotifyPropertyChanged
+			{
+				this._TextValue = 'default';
+				
+				this.PropertyChanged = new Event();
+			}
+			Object.defineProperty(Model.prototype, 'TextValue', {
+				get: function() {
+					return this._TextValue;
+				},
+				set: function(value) {
+					var old = this._TextValue;
+					this._TextValue = value;
+					this.PropertyChanged.fire({ propertyName: 'TextValue', newValue: value, oldValue: old });
+				},
+				enumerable: true
+			});
+			
+			var model = new Model();
+			model.TextValue = 'Hello world!!!';
+	
+	
+			//$scope.form.labelMessage.text = $scope.message;
+	
+			//$scope.form.bindings.add(model, 'TextValue', labelMessage, 'text');
+
+			var b = Binding.Create(model, 'TextValue', $scope.form.labelMessage, 'text', { mode: BindingModeEnum.ONEWAY, auto: true });
+			model.TextValue = 'varza';
+
+
+			var b2 = Binding.Create(model, 'TextValue', $scope.form.textboxMessage, 'text', { mode: BindingModeEnum.TWOWAY, auto: true });
+
+			var b3 = Binding.Create($scope.form.textbox1, 'text', $scope.form.textbox2, 'text', { mode: BindingModeEnum.TWOWAY, auto: true });
+
+			var b4 = Binding.Create(model, 'TextValue', $scope.form.buttonEdit1, 'text', { mode: BindingModeEnum.ONEWAY, auto: true });
+
+			//$scope.form.textboxMessage.onTextChange = function(){alert('onTextChange');};
+
 
 			$scope.on($scope.form.buttonGet, 'onClick', function() {
 

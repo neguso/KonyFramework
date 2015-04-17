@@ -97,14 +97,16 @@ Binding.Create = function(source, sourcePath, target, targetPath, options) {
     var binding = new Binding(source, sourcePath, target, targetPath, options);
     // configure source listener
     if (isWidget(source)) {
-        if (source.constructor === kony.ui.TextBox2) binding.sourceListener = new TextBoxListener(binding.sourceChange, source);
+        if (source.constructor === kony.ui.Label) binding.sourceListener = new WidgetListener(binding.sourceChange, source, []);
+        else if (source.constructor === kony.ui.TextBox2) binding.sourceListener = new TextBoxListener(binding.sourceChange, source);
         //...
     } else if (isModel(source)) {
         binding.sourceListener = new ObjectListener(binding.sourceChange, source, [sourcePath]);
     }
     // configure target listener
     if (isWidget(target)) {
-        if (target.constructor === kony.ui.TextBox2) binding.targetListener = new TextBoxListener(binding.targetChange, target);
+        if (target.constructor === kony.ui.Label) binding.targetListener = new WidgetListener(binding.targetChange, target, []);
+        else if (target.constructor === kony.ui.TextBox2) binding.targetListener = new TextBoxListener(binding.targetChange, target);
         //...
     } else if (isModel(target)) {
         binding.targetListener = new ObjectListener(binding.targetChange, target, [targetPath]);

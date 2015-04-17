@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <application id="KonyFramework" name="KonyFramework">
     <container isflex="false" displayname="Form" id="formAbout" type="form"/>
-    <container isflex="false" displayname="Form" id="formHome" type="form"/>
+    <container isflex="false" displayname="Form" id="formHome" type="form">
+        <component displayname="TextBox2" id="textboxMessage" type="textbox2"/>
+        <component displayname="TextBox2" id="textbox1" type="textbox2"/>
+        <component displayname="TextBox2" id="textbox2" type="textbox2"/>
+    </container>
     <container isflex="false" displayname="Form" id="formInfo" type="form"/>
     <globalsequences/>
     <skins/>

@@ -144,22 +144,23 @@ function addWidgetsformHome() {
         "text": "TextBox2",
         "secureTextEntry": false,
         "textInputMode": constants.TEXTBOX_INPUT_MODE_ANY,
+        "keyBoardStyle": constants.TEXTBOX_KEY_BOARD_STYLE_DEFAULT,
         "placeholder": null,
         "autoCapitalize": constants.TEXTBOX_AUTO_CAPITALIZE_NONE,
         "skin": "tbx2Normal",
-        "focusSkin": "tbx2Focus",
-        "keyBoardStyle": constants.TEXTBOX_KEY_BOARD_STYLE_DEFAULT
+        "focusSkin": "tbx2Focus"
     }, {
-        "padding": [0, 0, 0, 0],
         "contentAlignment": constants.CONTENT_ALIGN_MIDDLE_LEFT,
         "containerHeightMode": constants.TEXTBOX_FONT_METRICS_DRIVEN_HEIGHT,
+        "padding": [0, 0, 0, 0],
+        "contentAlignment": constants.CONTENT_ALIGN_MIDDLE_LEFT,
+        "containerHeightMode": constants.TEXTBOX_DEFAULT_PLATFORM_HEIGHT,
         "marginInPixel": false,
         "paddingInPixel": false,
         "containerWeight": 9
     }, {
-        "keyboardActionLabel": constants.TEXTBOX_KEYBOARD_LABEL_DEFAULT,
-        "autoFilter": false,
-        "viewType": constants.TEXTBOX_VIEW_TYPE_DEFAULT
+        "autoCorrect": false,
+        "autoComplete": false
     });
     var label5300107591013 = new kony.ui.Label({
         "id": "label5300107591013",
@@ -210,22 +211,23 @@ function addWidgetsformHome() {
         "text": "textbox1",
         "secureTextEntry": false,
         "textInputMode": constants.TEXTBOX_INPUT_MODE_ANY,
+        "keyBoardStyle": constants.TEXTBOX_KEY_BOARD_STYLE_DEFAULT,
         "placeholder": null,
         "autoCapitalize": constants.TEXTBOX_AUTO_CAPITALIZE_NONE,
         "skin": "tbx2Normal",
-        "focusSkin": "tbx2Focus",
-        "keyBoardStyle": constants.TEXTBOX_KEY_BOARD_STYLE_DEFAULT
+        "focusSkin": "tbx2Focus"
     }, {
-        "padding": [0, 0, 0, 0],
         "contentAlignment": constants.CONTENT_ALIGN_MIDDLE_LEFT,
         "containerHeightMode": constants.TEXTBOX_FONT_METRICS_DRIVEN_HEIGHT,
+        "padding": [0, 0, 0, 0],
+        "contentAlignment": constants.CONTENT_ALIGN_MIDDLE_LEFT,
+        "containerHeightMode": constants.TEXTBOX_DEFAULT_PLATFORM_HEIGHT,
         "marginInPixel": false,
         "paddingInPixel": false,
         "containerWeight": 7
     }, {
-        "keyboardActionLabel": constants.TEXTBOX_KEYBOARD_LABEL_DEFAULT,
-        "autoFilter": false,
-        "viewType": constants.TEXTBOX_VIEW_TYPE_DEFAULT
+        "autoCorrect": false,
+        "autoComplete": false
     });
     var textbox2 = new kony.ui.TextBox2({
         "id": "textbox2",
@@ -238,22 +240,23 @@ function addWidgetsformHome() {
         "text": "textbox2",
         "secureTextEntry": false,
         "textInputMode": constants.TEXTBOX_INPUT_MODE_ANY,
+        "keyBoardStyle": constants.TEXTBOX_KEY_BOARD_STYLE_DEFAULT,
         "placeholder": null,
         "autoCapitalize": constants.TEXTBOX_AUTO_CAPITALIZE_NONE,
         "skin": "tbx2Normal",
-        "focusSkin": "tbx2Focus",
-        "keyBoardStyle": constants.TEXTBOX_KEY_BOARD_STYLE_DEFAULT
+        "focusSkin": "tbx2Focus"
     }, {
-        "padding": [0, 0, 0, 0],
         "contentAlignment": constants.CONTENT_ALIGN_MIDDLE_LEFT,
         "containerHeightMode": constants.TEXTBOX_FONT_METRICS_DRIVEN_HEIGHT,
+        "padding": [0, 0, 0, 0],
+        "contentAlignment": constants.CONTENT_ALIGN_MIDDLE_LEFT,
+        "containerHeightMode": constants.TEXTBOX_DEFAULT_PLATFORM_HEIGHT,
         "marginInPixel": false,
         "paddingInPixel": false,
         "containerWeight": 0
     }, {
-        "keyboardActionLabel": constants.TEXTBOX_KEYBOARD_LABEL_DEFAULT,
-        "autoFilter": false,
-        "viewType": constants.TEXTBOX_VIEW_TYPE_DEFAULT
+        "autoCorrect": false,
+        "autoComplete": false
     });
     formHome.add(
     labelMessage, buttonEdit1, buttonEdit2, buttonGet, buttonCancel, buttonKonyGet, buttonKonyCancel, textboxMessage, label5300107591013, label5300107591014, textbox1, textbox2);
@@ -276,21 +279,15 @@ function formHomeGlobals() {
         "addWidgets": addWidgetsformHome
     }, {
         "padding": [0, 0, 0, 0],
-        "displayOrientation": constants.FORM_DISPLAY_ORIENTATION_PORTRAIT,
         "paddingInPixel": false
     }, {
         "retainScrollPosition": false,
-        "windowSoftInputMode": constants.FORM_ADJUST_RESIZE,
-        "titleBar": true,
-        "footerOverlap": false,
-        "headerOverlap": false,
         "inTransitionConfig": {
-            "formAnimation": 0
+            "formTransition": "None"
         },
         "outTransitionConfig": {
-            "formAnimation": 0
-        },
-        "menuPosition": constants.FORM_MENU_POSITION_AFTER_APPMENU
+            "formTransition": "None"
+        }
     });
     formHome.setDefaultUnit(kony.flex.DP);
 };

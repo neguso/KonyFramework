@@ -34,17 +34,15 @@ toolkit.module('app', ['kony']).run(['$state', '$location', function($state, $lo
             mode: BindingModeEnum.ONEWAY,
             auto: true
         });
+        //b.perform();
         model.TextValue = 'varza';
+        //b.perform();
         var b2 = Binding.Create(model, 'TextValue', $scope.form.textboxMessage, 'text', {
             mode: BindingModeEnum.TWOWAY,
             auto: true
         });
         var b3 = Binding.Create($scope.form.textbox1, 'text', $scope.form.textbox2, 'text', {
             mode: BindingModeEnum.TWOWAY,
-            auto: true
-        });
-        var b4 = Binding.Create(model, 'TextValue', $scope.form.buttonEdit1, 'text', {
-            mode: BindingModeEnum.ONEWAY,
             auto: true
         });
         //$scope.form.textboxMessage.onTextChange = function(){alert('onTextChange');};
