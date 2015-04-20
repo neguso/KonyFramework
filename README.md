@@ -14,14 +14,14 @@ Features:
 
 The Framework use some terms/patterns:
 
-- Module
-> Objects that contains services.
-
-- Service
-- Service configuration
-- Requires
-- Service Dependencies
-- Dependency Injection
+Term | Notes
+--- | ---
+Module | Objects that contains services.
+Service | Content in the second column
+Service configuration |
+Requires |
+Service Dependencies |
+Dependency Injection |
 
 
 
