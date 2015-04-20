@@ -9,6 +9,7 @@ Main features:
 - Data Binding
 - MVVM Pattern
 
+<br>
 
 ## Documentation
 
@@ -28,7 +29,7 @@ Dependency Injection |
 - Module object
 - Injector object
 
-
+<br>
 ## Toolkit Object
 Toolkit is a singleton object containing the core services.
 
@@ -37,7 +38,7 @@ Toolkit is a singleton object containing the core services.
 - `injector(modules)`
 - `start()`
 
-
+<br>
 ##### `module(name, [requires])`
 Create or get a module. If only the name is supplied it search for a module with that name and returns it.
 
@@ -48,7 +49,7 @@ Param | Type | Details
 name | String | The module name.
 requires (optional) | Array of String | List of dependent modules. The list is used to resolve services injected into services defined in the module.
 
-
+<br>
 ##### `injector(modules)`
 Create an injector that resolve services in the specified modules list.
 
@@ -57,13 +58,12 @@ Param | Type | Details
 --- | --- | ---
 modules | Array of String | List of module names.
 
-
+<br>
 ##### `start()`
 Framework bootstrap method.
 
 
-
-
+<br>
 ## Module Object
 Modules are objects that contains services. They are intended for application modularization and encapsulation. Module methods returns the current module so you can use fluent interface.
 
@@ -74,10 +74,11 @@ Modules are objects that contains services. They are intended for application mo
 - `service(name, service_configuration)`
 - `controller(name, service_configuration)`
 
+<br>
 ##### `run(service_configuration)`
 Register work to be executed when module is initialized. This occur after all application modules has been loaded.
 
-
+<br>
 ##### `value(name, value)`
 todo
 
@@ -87,15 +88,19 @@ Param | Type | Details
 name | String | Service name.
 value | object | Service value.
 
+<br>
 ##### `factory(name, service_configuration)`
 todo
 
+<br>
 ##### `service(name, service_configuration)`
 todo
 
+<br>
 ##### `controller(name, service_configuration)`
 todo
 
+<br>
 #### Example:
 
 ```javascript
