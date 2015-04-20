@@ -15,13 +15,15 @@ Features:
 The Framework use some terms/patterns:
 
 - Module
+> Objects that contains services.
+
 - Service
 - Service configuration
 - Requires
 - Service Dependencies
 - Dependency Injection
 
-> sd asdf asdf asdf asd
+
 
 ## Toolkit
 Toolkit is a singleton object containing the core services.
@@ -32,7 +34,7 @@ Modules are objects that contains services. They are intended for application mo
 
 #### Define a module:
 
-```
+```javascript
 var my_module = toolkit.module('my module', ['required module 1', 'required module 2']);
 ```
 
