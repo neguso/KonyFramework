@@ -40,10 +40,17 @@ Create or get a module. If only the name is supplied it search for a module with
 
 Param | Type | Details
 --- | --- | ---
-name | String | Module name
-requires (optional) | Array of String | Names list of dependent modules. 
+name | String | The module name.
+requires (optional) | Array of String | List of dependent modules. The list is used to resolve services injected into services defined in the module.
 
 ##### injector(modules)
+Create an injector that resolve services in the specified modules list.
+
+###### Parameters
+Param | Type | Details
+--- | --- | ---
+modules | Array of String | List of module names.
+
 
 ##### start()
 
