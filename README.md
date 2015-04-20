@@ -6,7 +6,8 @@ Features:
 - module pattern
 - dependency injection
 - promise support using RSVP
-- MVVM pattern
+- data binding support
+- MVVM pattern templates
 
 
 ## Documentation
