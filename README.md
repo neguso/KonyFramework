@@ -2,12 +2,12 @@
 
 A Javascript framework for Kony development.
 
-Features:
-- module pattern
-- dependency injection
-- promise support using RSVP
-- data binding support
-- MVVM pattern
+Main features:
+- Module Pattern
+- Dependency Injection
+- Javascript Promises
+- Data Binding
+- MVVM Pattern
 
 
 ## Documentation
@@ -17,16 +17,35 @@ The Framework use some terms/patterns:
 Term | Notes
 --- | ---
 Module | Objects that contains services.
-Service | Content in the second column
+Service |
 Service configuration |
 Requires |
 Service Dependencies |
 Dependency Injection |
 
 
-
 ## Toolkit
 Toolkit is a singleton object containing the core services.
+
+#### Methods
+
+- module(name, requires)
+- injector(modules)
+- start()
+
+##### `module(name, [requires])`
+Create or get a module. If only the name is supplied it search for a module with that name and returns it.
+
+###### Parameters
+
+Param | Type | Details
+--- | --- | ---
+name | String | Module name
+requires (optional) | Array of String | Names list of dependent modules. 
+
+##### injector(modules)
+
+##### start()
 
 ## Modules
 
