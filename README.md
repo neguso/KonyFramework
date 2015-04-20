@@ -29,9 +29,9 @@ Toolkit is a singleton object containing the core services.
 
 #### Methods
 
-- module(name, requires)
-- injector(modules)
-- start()
+- `module(name, requires)`
+- `injector(modules)`
+- `start()`
 
 ##### `module(name, [requires])`
 Create or get a module. If only the name is supplied it search for a module with that name and returns it.
