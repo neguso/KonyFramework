@@ -24,12 +24,12 @@ Service Dependencies |
 Dependency Injection |
 
 ### Index
-- Toolkit
-- Module
-- Injector
+- Toolkit object
+- Module object
+- Injector object
 
 
-## Toolkit
+## Toolkit Object
 Toolkit is a singleton object containing the core services.
 
 #### Methods
@@ -64,7 +64,7 @@ Framework bootstrap method.
 
 
 
-## Module
+## Module Object
 Modules are objects that contains services. They are intended for application modularization and encapsulation. Module methods returns the current module so you can use fluent interface.
 
 #### Methods:
@@ -77,8 +77,15 @@ Modules are objects that contains services. They are intended for application mo
 ##### `run(service_configuration)`
 Register work to be executed when module is initialized. This occur after all application modules has been loaded.
 
+
 ##### `value(name, value)`
 todo
+
+###### Parameters
+Param | Type | Details
+--- | --- | ---
+name | String | Service name.
+value | object | Service value.
 
 ##### `factory(name, service_configuration)`
 todo
@@ -94,6 +101,15 @@ todo
 ```javascript
 var my_module = toolkit.module('my module', ['required module 1', 'required module 2']);
 ```
+
+## Injector Object
+todo
+
+#### Methods:
+- `method1()` 
+
+##### `method1()`
+todo
 
 
 Default modules:
