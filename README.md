@@ -7,19 +7,21 @@ Features:
 - dependency injection
 - promise support using RSVP
 - data binding support
-- MVVM pattern templates
+- MVVM pattern
 
 
 ## Documentation
 
-The Framework introduce and frequently use some terms/patterns:
+The Framework use some terms/patterns:
 
 - Module
 - Service
 - Service configuration
-- requires
-- service dependencies
-- dependency injection
+- Requires
+- Service Dependencies
+- Dependency Injection
+
+> 
 
 ## Toolkit
 Toolkit is a singleton object containing the core services.
