@@ -1,6 +1,6 @@
 # KonyFramework
 
-A Javascript framework for Kony development.
+A Javascript framework, tools, patterns and templates for Kony application development.
 
 Main features:
 - Module Pattern
@@ -10,10 +10,9 @@ Main features:
 - MVVM Pattern
 
 <br>
-
 ## Documentation
 
-The Framework use some terms/patterns:
+Throughout the documentation some terms/patterns are used:
 
 Term | Notes
 --- | ---
@@ -46,8 +45,8 @@ Create or get a module. If only the name is supplied it search for a module with
 
 Param | Type | Details
 --- | --- | ---
-name | String | The module name.
-requires (optional) | Array of String | List of dependent modules. The list is used to resolve services injected into services defined in the module.
+name | `String` | The module name.
+requires (optional) | `Array of String` | List of dependent modules. The list is used to resolve services injected into services defined in the module.
 
 <br>
 ##### `injector(modules)`
@@ -56,7 +55,7 @@ Create an injector that resolve services in the specified modules list.
 ###### Parameters
 Param | Type | Details
 --- | --- | ---
-modules | Array of String | List of module names.
+modules | `Array of String` | List of module names.
 
 <br>
 ##### `start()`
@@ -85,8 +84,8 @@ todo
 ###### Parameters
 Param | Type | Details
 --- | --- | ---
-name | String | Service name.
-value | object | Service value.
+name | `String` | Service name.
+value | `Object` | Service value.
 
 <br>
 ##### `factory(name, service_configuration)`
