@@ -118,7 +118,7 @@ toolkit.module('math', ['system'])
 
 <br>
 ##### `factory(name, service_configuration)`
-Define a service using a factory. A factory is a function that returns the service function.
+Define a service using a factory. A factory is a function that returns the service function. The factory function is called once first time the service is resolved, on subsequent service resolution the same value is returned. 
 
 ```javascript
 toolkit.module('math', ['system'])
@@ -139,7 +139,22 @@ toolkit.module('math', ['system'])
 
 <br>
 ##### `service(name, service_configuration)`
-todo
+Define a service using a constructor. A constructor is a function that construct an object instance. The constructor is called each time the service is resolved, each subsequent service resolution new instances are returned.
+
+```javascript
+toolkit.module('database', ['system', 'storage'])
+  // define a service that consists in an object 'users' that has a 'CRUD' interface
+  .service('users', ['file', function() {
+    this.create = function(...) {
+      // create a new user using 'file' service
+    };
+    this.read = function(...) {
+      // read users from storage using 'file' service
+    };
+    ...
+  }]);
+
+```
 
 <br>
 ##### `controller(name, service_configuration)`
@@ -157,9 +172,10 @@ todo
 
 #### Methods:
 - `resolve(service)`
-- `instance()`
+- `instance(service_provider)`
+- `execute(service_configuration)`
 
-##### `method1()`
+##### `resolve(service)`
 todo
 
 
