@@ -156,7 +156,8 @@ var my_module = toolkit.module('my module', ['required module 1', 'required modu
 todo
 
 #### Methods:
-- `method1()` 
+- `resolve(service)`
+- `instance()`
 
 ##### `method1()`
 todo
@@ -175,4 +176,4 @@ todo
 
 
 # Known Issues
-- run() method of the module is not called when module is defined after the bootstrap occur
+- run() method of the module is not called when module is defined after the toolkit is started
