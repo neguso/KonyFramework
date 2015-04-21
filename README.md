@@ -15,10 +15,10 @@ Main features:
 Throughout the documentation some terms/patterns are used:
 
 Term | Notes
---- | ---
-Module | Objects that contains services.
-Service |
-Service configuration |
+:--- | :---
+Module | An objects that encapsulate services.
+Service | A javascript function usually but in general can be any object providing services to consumers. 
+Service configuration | 
 Requires |
 Service Dependencies |
 Dependency Injection |
