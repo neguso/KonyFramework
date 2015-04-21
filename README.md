@@ -23,7 +23,7 @@ Requires | A list of modules that a specified module depends on.
 Service Dependencies | A list of services that a specified service depends on.
 Dependency Injection | A design pattern that implements inversion of control for services. A service delegates to the framework the control flow of discovering and importing a service specified or *injected* by the caller.
 
-### Index
+### Documentation Index
 - Toolkit object
 - Module object
 - Injector object
@@ -60,6 +60,13 @@ modules | `Array of String` | List of module names.
 <br>
 ##### `start()`
 Framework bootstrap method.
+
+
+#### Sample code:
+```javascript
+// define a module 'users' that uses modules 'systems' and 'storage'
+var users_module = toolkit.module('users', ['system', 'storage']);
+```
 
 
 <br>
