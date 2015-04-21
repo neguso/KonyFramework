@@ -73,6 +73,19 @@ var users_module = toolkit.module('users', ['system', 'storage']);
 ## Module Object
 Modules are objects that contains services. They are intended for application modularization and encapsulation. Module methods returns the current module so you can use fluent interface.
 
+#### Service Configuration
+In the context of modules the 'service configuration' terms is used. The service configuration is basically an array of dependencies and a function in the last position of the array.
+
+```
+<service_dependency> ::= ['service1', 'service2', ..., function(s1, s2) { ... }]
+  
+```
+
+Sample:
+```javascript
+['']
+```
+
 #### Methods:
 - `run(service_configuration)`
 - `value(name, value)`
@@ -83,6 +96,12 @@ Modules are objects that contains services. They are intended for application mo
 <br>
 ##### `run(service_configuration)`
 Register work to be executed when module is initialized. This occur after all application modules has been loaded.
+
+###### Parameters
+Param | Type | Details
+--- | --- | ---
+service_configuration | `Array` | The service configuration of the service to be run.
+
 
 <br>
 ##### `value(name, value)`
