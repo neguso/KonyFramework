@@ -32,7 +32,7 @@ Dependency Injection | A design pattern that implements inversion of control for
 ## Toolkit Object
 Toolkit is a singleton object containing the core services.
 
-#### Methods
+#### Methods:
 - `module(name, requires)`
 - `injector(modules)`
 - `start()`
@@ -86,7 +86,7 @@ Register work to be executed when module is initialized. This occur after all ap
 
 <br>
 ##### `value(name, value)`
-todo
+Define a value into the module. A value is the simplest form of a service. The value can be any object.
 
 ###### Parameters
 Param | Type | Details
@@ -94,9 +94,27 @@ Param | Type | Details
 name | `String` | Service name.
 value | `Object` | Service value.
 
+```javascript
+// define 'pi' in 'math' module 
+toolkit.module('math', ['system'])
+  .value('pi', 3.1415);
+```
+
 <br>
 ##### `factory(name, service_configuration)`
-todo
+Define a service using a factory. A factory is a function that returns the service function.
+
+```javascript
+toolkit.module('math', ['system'])
+  .value('pi', 3.1415)
+  .factory('circle_area', ['pi', function(pi) {
+    return function(radius)
+    {
+      return pi * radius * radius;
+    }
+  }]);
+```
+
 
 <br>
 ##### `service(name, service_configuration)`
