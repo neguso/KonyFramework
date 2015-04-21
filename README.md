@@ -2,7 +2,7 @@
 
 A Javascript framework, tools, patterns and templates for Kony application development.
 
-Main features:
+**Main features:**
 - Module Pattern
 - Dependency Injection
 - Javascript Promises
@@ -18,10 +18,10 @@ Term | Notes
 :--- | :---
 Module | An objects that encapsulate services.
 Service | A javascript function usually but in general can be any object providing services to consumers. 
-Service configuration | 
-Requires |
-Service Dependencies |
-Dependency Injection |
+Service Configuration | The definition of a service consists in the service itself and a list of dependecies that will be injected into the service when service is instantiated.
+Requires | A list of modules that a specified module depends on.
+Service Dependencies | A list of services that a specified service depends on.
+Dependency Injection | A design pattern that implements inversion of control for services. A service delegates to the framework the control flow of discovering and importing a service specified or *injected* by the caller.
 
 ### Index
 - Toolkit object
