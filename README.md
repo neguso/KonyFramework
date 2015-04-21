@@ -22,6 +22,7 @@ Service Configuration | The definition of a service consists in the service itse
 Requires | A list of modules that a specified module depends on.
 Service Dependencies | A list of services that a specified service depends on.
 Dependency Injection | A design pattern that implements inversion of control for services. A service delegates to the framework the control flow of discovering and importing a service specified or *injected* by the caller.
+Javascript Closure | *Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure 'remembers' the environment in which it was created.* - [MDN Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 
 ### Documentation Index
 - Toolkit object
@@ -61,7 +62,7 @@ modules | `Array of String` | List of module names.
 ##### `start()`
 Framework bootstrap method.
 
-
+<br>
 #### Sample code:
 ```javascript
 // define a module 'users' that uses modules 'systems' and 'storage'
@@ -81,10 +82,6 @@ In the context of modules the 'service configuration' terms is often used. The s
   'service1', 'service2', ... - services that will be injected in the service function through parameters s1, s2, ...
 ```
 
-Sample:
-```javascript
-['']
-```
 
 #### Methods:
 - `run(service_configuration)`
@@ -125,10 +122,15 @@ Define a service using a factory. A factory is a function that returns the servi
 
 ```javascript
 toolkit.module('math', ['system'])
+  
+  // define a value into module
   .value('pi', 3.1415)
+  
+  // define a service circle_area(radus) that returns the area of a circle.
   .factory('circle_area', ['pi', function(pi) {
     return function(radius)
     {
+      // you can use injected dependencies (pi service) here through javascript closure mechanism
       return pi * radius * radius;
     }
   }]);
