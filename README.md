@@ -82,7 +82,6 @@ In the context of modules the 'service configuration' terms is often used. The s
   'service1', 'service2', ... - services that will be injected in the service function through parameters s1, s2, ...
 ```
 
-
 #### Methods:
 - `run(service_configuration)`
 - `value(name, value)`
@@ -158,17 +157,13 @@ toolkit.module('database', ['system', 'storage'])
 
 <br>
 ##### `controller(name, service_configuration)`
-todo
+Define a contrroller using a constructor. A controller is a service that get injected with a specific scope service.
+See scope service for more information about controllers.
+
 
 <br>
-#### Example:
-
-```javascript
-var my_module = toolkit.module('my module', ['required module 1', 'required module 2']);
-```
-
 ## Injector Object
-todo
+Injector object implements the dependency injection pattern and is used to resolve services in a list of modules.
 
 #### Methods:
 - `resolve(service)`
@@ -176,7 +171,7 @@ todo
 - `execute(service_configuration)`
 
 ##### `resolve(service)`
-todo
+Resolve a service in the injector modules list. If no service is found or more than one service is found an exception is thrown.
 
 
 Default modules:
