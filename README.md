@@ -165,26 +165,55 @@ See scope service for more information about controllers.
 ## Injector Object
 Injector object implements the dependency injection pattern and is used to resolve services in a list of modules.
 
+<br>
 #### Methods:
 - `resolve(service)`
 - `instance(service_provider)`
 - `execute(service_configuration)`
 
+<br>
 ##### `resolve(service)`
 Resolve a service in the injector modules list. If no service is found or more than one service is found an exception is thrown.
+The method returns a service provider object. A service provider is an object with a `get()` method that returns the service instance.
+
+###### Parameters
+Param | Type | Details
+--- | --- | ---
+service | `String` | Service name.
 
 
-Default modules:
+<br>
+##### `instance(service_provider)`
+Instantiate a service from a service provider. If service provider has a field called 'instance' the value of this field is returned. If `instance` field is `null` then the `get()` method is called and `instance` field is populated.
+
+###### Parameters
+Param | Type | Details
+--- | --- | ---
+service_provider | ServiceProvider | Service provider object.
+
+<br>
+##### `execute(service_configuration)`
+Execute a function specified using the service configuration syntax. Usefull in situations when you want to execute a function outside modules and to inject dependencies into it.
+
+
+<br>
+## Builtin Modules
+The toolkit comes with a list of builtin modules containing core services.
+
 - System
 - Kony
 
+
+<br>
 ### System Module
 todo
 
+
+<br>
 ### Kony Module
 todo
 
 
-
+<br>
 # Known Issues
 - run() method of the module is not called when module is defined after the toolkit is started
