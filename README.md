@@ -152,7 +152,6 @@ toolkit.module('database', ['system', 'storage'])
     };
     ...
   }]);
-
 ```
 
 <br>
@@ -209,6 +208,16 @@ todo
 #### Services
 - $version
 - $injector
+
+<br>
+##### $version
+Toolkit version.
+
+`$version ::= { major: number, minor: number }`
+
+<br>
+##### $injector
+todo
 
 <br>
 ### Kony Module
