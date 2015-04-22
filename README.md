@@ -75,11 +75,13 @@ var m = toolkit.module('users', ['system', 'storage']);
 Modules are objects that contains services. They are intended for application modularization and encapsulation. Module methods returns the current module so you can use fluent interface.
 
 #### Service Configuration
-In the context of modules the 'service configuration' terms is often used. The service configuration is basically an array of dependencies and a function in the last position of the array.
+In the context of modules the 'service configuration' terms is often used. The service configuration is basically an array of dependencies and a function in the last position of the array containing the service implementation.
 
 ```
-<service_dependency> ::= ['service1', 'service2', ..., function(s1, s2, ...) { /* service function */ }]
-  'service1', 'service2', ... - services that will be injected in the service function through parameters s1, s2, ...
+<service_configuration> ::= ['service0', 'service1', ..., function(s0, s1, ...) { /* service function */ }]
+  'service1', 'service2', ... ::= zero or more services that will be injected in the service function through parameters s0, s1, ...
+  function(s0, s1, ...) ::= service implementation
+  [function() {}] and function() {} are correct service configuartions when there are no dependencies.
 ```
 
 #### Methods:
