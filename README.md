@@ -24,7 +24,7 @@ Service Dependencies | A list of services that a specified service depends on.
 Dependency Injection | A design pattern that implements inversion of control for services. A service delegates to the framework the control flow of discovering and importing a service specified or *injected* by the caller.
 Javascript Closure | *Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure 'remembers' the environment in which it was created.* - [MDN Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 
-### Documentation Index
+### Index
 - Toolkit object
 - Module object
 - Injector object
