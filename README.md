@@ -78,10 +78,9 @@ Modules are objects that contains services. They are intended for application mo
 In the context of modules the 'service configuration' terms is often used. The service configuration is basically an array of dependencies and a function in the last position of the array containing the service implementation.
 
 ```
-<service_configuration> ::= ['service0', 'service1', ..., function(s0, s1, ...) { /* service function */ }]
-  'service1', 'service2', ... ::= zero or more services that will be injected in the service function through parameters s0, s1, ...
-  function(s0, s1, ...) ::= service implementation
-  [function() {}] and function() {} are correct service configuartions when there are no dependencies.
+<service_configuration> ::= ['service0', 'service1', ..., function(s0, s1, ...) { }]
+'service1', 'service2', ... ::= services that will be injected in the service function through parameters s0, s1, ...
+function(s0, s1, ...) ::= service implementation
 ```
 
 #### Methods:
@@ -99,7 +98,6 @@ Register work to be executed when module is initialized. This occur after all ap
 Param | Type | Details
 --- | --- | ---
 service_configuration | `Array` | The service configuration of the service to be run.
-
 
 <br>
 ##### `value(name, value)`
@@ -183,7 +181,6 @@ Param | Type | Details
 --- | --- | ---
 service | `String` | Service name.
 
-
 <br>
 ##### `instance(service_provider)`
 Instantiate a service from a service provider. If service provider has a field called 'instance' the value of this field is returned. If `instance` field is `null` then the `get()` method is called and `instance` field is populated.
@@ -197,7 +194,6 @@ service_provider | ServiceProvider | Service provider object.
 ##### `execute(service_configuration)`
 Execute a function specified using the service configuration syntax. Usefull in situations when you want to execute a function outside modules and to inject dependencies into it.
 
-
 <br>
 ## Builtin Modules
 The toolkit comes with a list of builtin modules containing core services.
@@ -210,11 +206,18 @@ The toolkit comes with a list of builtin modules containing core services.
 ### System Module
 todo
 
+#### Services
+- $version
+- $injector
 
 <br>
 ### Kony Module
 todo
 
+#### Services
+- $state
+- $location
+- $http
 
 <br>
 # Known Issues
