@@ -40,7 +40,7 @@ Toolkit is a singleton object containing the core services.
 
 <br>
 ##### `module(name, [requires])`
-Create or get a module. If only the name is supplied it search for a module with that name and returns it.
+Create or get a module. If only the name is supplied it search for a module with that name and returns it. When two parameters are supplied a new module is created and returned.
 
 ###### Parameters
 
@@ -66,7 +66,7 @@ Framework bootstrap method.
 #### Sample code:
 ```javascript
 // define a module 'users' that uses modules 'systems' and 'storage'
-var users_module = toolkit.module('users', ['system', 'storage']);
+var m = toolkit.module('users', ['system', 'storage']);
 ```
 
 
