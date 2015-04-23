@@ -119,6 +119,11 @@ toolkit.module('math', ['system'])
 ##### `factory(name, service_configuration)`
 Define a service using a factory. A factory is a function that returns the service function. The factory function is called once first time the service is resolved, on subsequent service resolution the same value is returned. 
 
+Param | Type | Details
+--- | --- | ---
+name | `String` | Service name.
+service_configuration | `ServiceConfiguration` | The service configuration object.
+
 ```javascript
 toolkit.module('math', ['system'])
   
@@ -135,10 +140,14 @@ toolkit.module('math', ['system'])
   }]);
 ```
 
-
 <br>
 ##### `service(name, service_configuration)`
 Define a service using a constructor. A constructor is a function that construct an object instance. The constructor is called each time the service is resolved, each subsequent service resolution new instances are returned.
+
+Param | Type | Details
+--- | --- | ---
+name | `String` | Service name.
+service_configuration | `ServiceConfiguration` | The service configuration object.
 
 ```javascript
 toolkit.module('database', ['system', 'storage'])
@@ -159,6 +168,10 @@ toolkit.module('database', ['system', 'storage'])
 Define a contrroller using a constructor. A controller is a service that get injected with a specific scope service.
 See scope service for more information about controllers.
 
+Param | Type | Details
+--- | --- | ---
+name | `String` | Service name.
+service_configuration | `ServiceConfiguration` | The service configuration object.
 
 <br>
 ## Injector Object
@@ -187,11 +200,16 @@ Instantiate a service from a service provider. If service provider has a field c
 ###### Parameters
 Param | Type | Details
 --- | --- | ---
-service_provider | ServiceProvider | Service provider object.
+service_provider | `ServiceProvider` | Service provider object.
 
 <br>
 ##### `execute(service_configuration)`
 Execute a function specified using the service configuration syntax. Usefull in situations when you want to execute a function outside modules and to inject dependencies into it.
+
+###### Parameters
+Param | Type | Details
+--- | --- | ---
+service_configuration | `ServiceConfiguration` | Service provider object.
 
 <br>
 ## Builtin Modules
@@ -243,6 +261,27 @@ todo
 - $state
 - $location
 - $http
+
+<br>
+##### $state
+todo
+
+###### Methods
+- `states`
+- `register(stateName, form, controllerName)`
+
+<br>
+###### `method`
+todo
+
+###### Parameters
+Param | Type | Details
+--- | --- | ---
+param | `type` | Description.
+
+
+
+
 
 <br>
 # Known Issues / Tasks
