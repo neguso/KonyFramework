@@ -211,13 +211,29 @@ todo
 
 <br>
 ##### $version
-Toolkit version.
+The service returns a version object.
 
-`$version ::= { major: number, minor: number }`
+###### Members
+- `major` - Major version number.
+- `minor` - Minor version number.
 
 <br>
 ##### $injector
-todo
+The service returns an injector object.
+
+###### Methods
+- `get(service, modules)`
+
+<br>
+###### `get(service, modules)`
+Resolve a service in the specified modules list. 
+
+###### Parameters
+Param | Type | Details
+--- | --- | ---
+service | String | Service name.
+modules (optional) | Array of String  | List of modules to resolve the service. If modules are not specified the injector search through all modules.
+
 
 <br>
 ### Kony Module
@@ -229,5 +245,8 @@ todo
 - $http
 
 <br>
-# Known Issues
+# Known Issues / Tasks
 - run() method of the module is not called when module is defined after the toolkit is started
+- task: $injector.get() -  search in all modules also when modules array is empty
+- task: add a Guard class to check parameters
+- task: use Guard class in the framework
