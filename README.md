@@ -289,3 +289,11 @@ param | `type` | Description.
 - task: $injector.get() -  search in all modules also when modules array is empty
 - task: add a Guard class to check parameters
 - task: use Guard class in the framework
+
+
+# Ideas
+- a base class
+ - class inherit from
+ - sintax sugar for defining methods, get/set properties
+ - interface support
+- a configurable object
