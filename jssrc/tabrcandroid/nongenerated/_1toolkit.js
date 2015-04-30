@@ -111,7 +111,7 @@ var toolkit = (function() {
     }
     var modules = {};
     var _toolkit = {
-        /* Register a module. */
+        /* Register or retrieve a module. */
         module: function(moduleName, requires) {
             if (arguments.length === 1) {
                 if (modules.hasOwnProperty(moduleName)) return modules[moduleName];
@@ -174,11 +174,11 @@ var toolkit = (function() {
                 /* Instantiate a service. */
                 instance: function(serviceProvider) {
                     if (serviceProvider.hasOwnProperty('instance')) {
-                        // single instance
+                        // single instance service
                         if (serviceProvider.instance === null) serviceProvider.instance = serviceProvider.get();
                         return serviceProvider.instance;
                     } else {
-                        // multiple instances
+                        // multiple instances service
                         return serviceProvider.get();
                     }
                 },
@@ -204,7 +204,7 @@ var toolkit = (function() {
     };
     return _toolkit;
 })();
-toolkit.module('system', []).run([function() {}]).value('version', {
+toolkit.module('system', []).run([function() {}]).value('$version', {
     major: 1,
     minor: 0
 }).factory('$injector', [function() {

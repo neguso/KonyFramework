@@ -2,13 +2,17 @@ toolkit.module('app', ['kony']).run(['$state', '$location', function($state, $lo
     $state.register('home', formHome, 'HomeController');
     $state.register('edit', formInfo, 'InfoController');
     $state.register('about', formAbout, 'AboutController');
-    $location.startup('home');
+    $state.register('skintest', frmSkinTest, 'SkinTestController');
+    $location.startup('skintest');
 }]).controller('HomeController', ['$scope', '$location', '$http', function($scope, $location, $http) {
     $scope.message = 'hello world';
     $scope.on('init', function(eventobject) {
         function Model() // implements INotifyPropertyChanged
         {
             this._TextValue = 'default';
+            this.SaveCommand = new ButtonCommand('Save*', function() {
+                alert('Saved!');
+            });
             this.PropertyChanged = new Event();
         }
         Object.defineProperty(Model.prototype, 'TextValue', {
@@ -44,6 +48,11 @@ toolkit.module('app', ['kony']).run(['$state', '$location', function($state, $lo
             auto: true
         });
         var b4 = Binding.Create(model, 'TextValue', $scope.form.buttonEdit1, 'text', {
+            mode: BindingModeEnum.ONEWAY,
+            auto: true
+        });
+        // command binding
+        Binding.Create($scope.form.buttonSave, null, model, 'SaveCommand', {
             mode: BindingModeEnum.ONEWAY,
             auto: true
         });
@@ -102,4 +111,4 @@ toolkit.module('app', ['kony']).run(['$state', '$location', function($state, $lo
     $scope.on($scope.form.buttonSaveClose, 'onClick', function() {
         $location.back();
     });
-}]).controller('AboutController', ['$scope', function($scope) {}]);
+}]).controller('AboutController', ['$scope', function($scope) {}]).controller('SkinTestController', ['$scope', function($scope) {}]);

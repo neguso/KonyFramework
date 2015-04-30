@@ -50,4 +50,7 @@ function skinsInit() {
     lblNormal = "lblNormal";
     titleBar = "titleBar";
     gal2Focus = "gal2Focus";
+    formNormal = "formNormal";
+    buttonNormal = "buttonNormal";
+    buttonFocus = "buttonFocus";
 };

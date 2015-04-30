@@ -27,6 +27,7 @@ function appInit(params) {
     formAboutGlobals();
     formHomeGlobals();
     formInfoGlobals();
+    frmSkinTestGlobals();
     setAppBehaviors();
 };
 

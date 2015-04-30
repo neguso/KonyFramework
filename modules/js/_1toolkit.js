@@ -109,7 +109,7 @@ var toolkit = (function()
 
 	var _toolkit = {
 
-		/* Register a module. */
+		/* Register or retrieve a module. */
 		module: function(moduleName, requires)
 		{
 			if(arguments.length === 1)
@@ -207,13 +207,13 @@ var toolkit = (function()
 				{
 					if(serviceProvider.hasOwnProperty('instance'))
 					{
-						// single instance
+						// single instance service
 						if(serviceProvider.instance === null)
 							serviceProvider.instance = serviceProvider.get();
 						return serviceProvider.instance;
 					}
 					else {
-						// multiple instances
+						// multiple instances service
 						return serviceProvider.get();
 					}
 				},
@@ -253,7 +253,7 @@ toolkit.module('system', [])
 	.run([function() {
 
 	}])
-	.value('version', { major: 1, minor: 0 })
+	.value('$version', { major: 1, minor: 0 })
 	.factory('$injector', [function()
 	{
 		return {

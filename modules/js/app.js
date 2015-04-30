@@ -5,8 +5,9 @@ toolkit.module('app', ['kony'])
 		$state.register('home', formHome, 'HomeController');
 		$state.register('edit', formInfo, 'InfoController');
 		$state.register('about', formAbout, 'AboutController');
+		$state.register('skintest', frmSkinTest, 'SkinTestController');
 
-		$location.startup('home');
+		$location.startup('skintest');
 	}])
 	.controller('HomeController', ['$scope', '$location', '$http', function($scope, $location, $http) {
 
@@ -18,6 +19,8 @@ toolkit.module('app', ['kony'])
 			function Model() // implements INotifyPropertyChanged
 			{
 				this._TextValue = 'default';
+				
+				this.SaveCommand = new ButtonCommand('Save*', function() { alert('Saved!'); });
 				
 				this.PropertyChanged = new Event();
 			}
@@ -44,14 +47,19 @@ toolkit.module('app', ['kony'])
 			var b = Binding.Create(model, 'TextValue', $scope.form.labelMessage, 'text', { mode: BindingModeEnum.ONEWAY, auto: true });
 			model.TextValue = 'varza';
 
-
 			var b2 = Binding.Create(model, 'TextValue', $scope.form.textboxMessage, 'text', { mode: BindingModeEnum.TWOWAY, auto: true });
 
 			var b3 = Binding.Create($scope.form.textbox1, 'text', $scope.form.textbox2, 'text', { mode: BindingModeEnum.TWOWAY, auto: true });
 
 			var b4 = Binding.Create(model, 'TextValue', $scope.form.buttonEdit1, 'text', { mode: BindingModeEnum.ONEWAY, auto: true });
 
+			// command binding
+			Binding.Create($scope.form.buttonSave, null, model, 'SaveCommand', { mode: BindingModeEnum.ONEWAY, auto: true });
+
+
 			//$scope.form.textboxMessage.onTextChange = function(){alert('onTextChange');};
+
+
 
 
 			$scope.on($scope.form.buttonGet, 'onClick', function() {
@@ -123,6 +131,9 @@ toolkit.module('app', ['kony'])
 	}])
 	.controller('AboutController', ['$scope', function($scope) {
 
+	}])
+	.controller('SkinTestController', ['$scope', function($scope) {
+		
 	}]);
 
 

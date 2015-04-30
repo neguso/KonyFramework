@@ -22,8 +22,8 @@ function addWidgetsformHome() {
     var buttonEdit1 = new kony.ui.Button({
         "id": "buttonEdit1",
         "top": "188dp",
-        "left": "143dp",
-        "width": "260dp",
+        "left": "223dp",
+        "width": "180dp",
         "height": "50dp",
         "zIndex": 1,
         "isVisible": true,
@@ -41,8 +41,8 @@ function addWidgetsformHome() {
     var buttonEdit2 = new kony.ui.Button({
         "id": "buttonEdit2",
         "top": "246dp",
-        "left": "144dp",
-        "width": "260dp",
+        "left": "224dp",
+        "width": "180dp",
         "height": "50dp",
         "zIndex": 1,
         "isVisible": true,
@@ -255,8 +255,27 @@ function addWidgetsformHome() {
         "autoFilter": false,
         "viewType": constants.TEXTBOX_VIEW_TYPE_DEFAULT
     });
+    var buttonSave = new kony.ui.Button({
+        "id": "buttonSave",
+        "top": "143dp",
+        "left": "33dp",
+        "width": "155dp",
+        "height": "50dp",
+        "zIndex": 1,
+        "isVisible": true,
+        "text": "Save",
+        "skin": "btnNormal",
+        "focusSkin": "btnFocus"
+    }, {
+        "padding": [0, 0, 0, 0],
+        "contentAlignment": constants.CONTENT_ALIGN_CENTER,
+        "displayText": true,
+        "marginInPixel": false,
+        "paddingInPixel": false,
+        "containerWeight": 0
+    }, {});
     formHome.add(
-    labelMessage, buttonEdit1, buttonEdit2, buttonGet, buttonCancel, buttonKonyGet, buttonKonyCancel, textboxMessage, label5300107591013, label5300107591014, textbox1, textbox2);
+    labelMessage, buttonEdit1, buttonEdit2, buttonGet, buttonCancel, buttonKonyGet, buttonKonyCancel, textboxMessage, label5300107591013, label5300107591014, textbox1, textbox2, buttonSave);
 };
 
 function formHomeGlobals() {

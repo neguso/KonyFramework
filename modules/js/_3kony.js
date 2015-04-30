@@ -42,12 +42,71 @@ Event.prototype.fire = function(args) {
 
 
 
+
+
+// Abstract command to be used as a base class.
+function Command()
+{
+}
+
+Command.prototype.canExecute = function() { return true; };
+
+Command.prototype.execute = function() { };
+
+
+
+function ButtonCommand(text, onclick)
+{
+	// call base constructor
+	Command.call(this);
+
+	// constructor
+	this._text = text;
+	this._enabled = true;
+
+	this.canExecute = function() { return this.enabled; };
+	if(typeof onclick === 'function')
+		this.execute = function() { onclick(); };
+}
+
+// inheritance
+ButtonCommand.prototype = Object.create(Command.prototype);
+ButtonCommand.prototype.constructor = ButtonCommand;
+
+Object.defineProperty(ButtonCommand.prototype, 'text', {
+	get: function() {
+		return this._text;
+	},
+	set: function(value) {
+		var old = this._text;
+		this._text = value;
+		this.PropertyChanged.fire({ propertyName: 'text', newValue: value, oldValue: old });
+	},
+	enumerable: true
+});
+
+Object.defineProperty(ButtonCommand.prototype, 'enabled', {
+	get: function() {
+		return this._enabled;
+	},
+	set: function(value) {
+		var old = this._enabled;
+		this._enabled = value;
+		this.PropertyChanged.fire({ propertyName: 'enabled', newValue: value, oldValue: old });
+	},
+	enumerable: true
+});
+
+
+
+
 var BindingModeEnum = { ONEWAY: 'oneway', TWOWAY: 'twoway' }
 
 function Binding(source, sourcePath, target, targetPath, options)
 {
 	var sourceChanged = true;
 	var targetChanged = true;
+	var self = this;
 
 	this.source = source;
 	this.sourcePath = sourcePath;
@@ -55,16 +114,36 @@ function Binding(source, sourcePath, target, targetPath, options)
 	this.targetPath = targetPath;
 	this.options = options; // { mode: BindingModeEnum, auto: false|true }
 
+	// Converter object used to convert values when binding is performed.
 	this.converter = { convert: function(v) { return v; }, convertBack: function(v) { return v; } };
 
-	this.perform = function()
+
+	function commit(left, leftPath, right, rightPath, convert)
+	{
+		if(left[leftPath] instanceof Command)
+		{
+			var command = left[leftPath];
+			if(command.canExecute())
+				command.execute();
+		}
+		else
+			left[leftPath] = convert(right[rightPath]);
+	}
+
+	function core_perform()
 	{
 		if(this.options.mode === BindingModeEnum.ONEWAY)
 		{
 			if(sourceChanged)
 			{
-				try { target[targetPath] = this.converter.convert(source[sourcePath]); }
-				finally { sourceChanged = false; }
+				try
+				{
+					commit(this.target, this.targetPath, this.source, this.sourcePath, this.converter.convert);
+				}
+				finally
+				{
+					sourceChanged = false;
+				}
 			}
 		}
 		else if(this.options.mode === BindingModeEnum.TWOWAY)
@@ -74,7 +153,7 @@ function Binding(source, sourcePath, target, targetPath, options)
 				try
 				{
 					if(this.targetListener !== null) this.targetListener.suspend();
-					target[targetPath] = this.converter.convert(source[sourcePath]);
+					commit(this.target, this.targetPath, this.source, this.sourcePath, this.converter.convert);
 				}
 				finally
 				{
@@ -86,7 +165,7 @@ function Binding(source, sourcePath, target, targetPath, options)
 				try
 				{
 					if(this.sourceListener !== null) this.sourceListener.suspend();
-					source[sourcePath] = this.converter.convertBack(target[targetPath]);
+					commit(this.source, this.sourcePath, this.target, this.targetPath, this.converter.convertBack);
 				}
 				finally
 				{
@@ -99,20 +178,27 @@ function Binding(source, sourcePath, target, targetPath, options)
 	};
 
 
-	var self = this;
+	// Perform binding from source to target.
+	this.perform = function()
+	{
+		sourceChanged = true;
+		core_perform.apply(self);
+	}
 
-	this.sourceChange = function()
-	{//alert('sourceChange');
+	// Internal, called by listener when change is detected in source.
+	this.sourceChange = function(arg)
+	{
 		sourceChanged = true;
 		if(self.options.auto)
-			self.perform();
+			core_perform.apply(self);
 	};
 	
-	this.targetChange = function()
-	{//alert('targetChange');
+	// Internal, called by listener when change is detected in target.
+	this.targetChange = function(arg)
+	{
 		targetChanged = true;
 		if(self.options.auto)
-			self.perform();
+			core_perform.apply(self);
 	};
 	
 	this.sourceListener = null;
@@ -126,7 +212,8 @@ Binding.Create = function(source, sourcePath, target, targetPath, options)
 		if(typeof o === 'undefined' || o === null) return false;
 		
 		return o.constructor === kony.ui.Label
-			|| o.constructor === kony.ui.TextBox2;
+			|| o.constructor === kony.ui.TextBox2
+			|| o.constructor === kony.ui.Button;
 	}
 	
 	function isModel(o)
@@ -136,14 +223,34 @@ Binding.Create = function(source, sourcePath, target, targetPath, options)
 		return typeof o.PropertyChanged !== 'undefined';		
 	}
 
-	var binding = new Binding(source, sourcePath, target, targetPath, options);
+	var o = { mode: BindingModeEnum.ONEWAY, auto: true };
+	if(typeof options !== 'undefined')
+	{
+		if(typeof options.mode !== 'undefined') o.mode = options.mode;
+		if(typeof options.auto !== 'undefined') o.auto = options.auto;
+	}
 
-	// configure source listener
+	var binding = new Binding(source, sourcePath, target, targetPath, o);
+
+	// configure source listener if necessary, othervise no listener is created
 	if(isWidget(source))
 	{
 		if(source.constructor === kony.ui.TextBox2)
-			binding.sourceListener = new TextBoxListener(binding.sourceChange, source);
-		//...
+		{
+			if(sourcePath === 'text')
+				binding.sourceListener = new TextBoxListener(binding.sourceChange, source);
+		}
+		else if(source.constructor === kony.ui.Button)
+		{
+			if(sourcePath === null)
+			{
+				binding.sourceListener = new ButtonListener(binding.sourceChange, source);
+				
+				// assume that button is binded to a command, add ['text'] properties binding
+				Binding.Create(target[targetPath], 'text', source, 'text');
+			}
+		}
+		//todo: add more widgets here
 	}
 	else if(isModel(source))
 	{
@@ -154,8 +261,16 @@ Binding.Create = function(source, sourcePath, target, targetPath, options)
 	if(isWidget(target))
 	{
 		if(target.constructor === kony.ui.TextBox2)
-			binding.targetListener = new TextBoxListener(binding.targetChange, target);
-		//...
+		{
+			if(targetPath === 'text')
+				binding.targetListener = new TextBoxListener(binding.targetChange, target);
+		}
+		else if(target.constructor === kony.ui.Button)
+		{
+			if(targetPath === null)
+				binding.targetListener = new ButtonListener(binding.targetChange, target);
+		}
+		//todo: add more widgets here
 	}
 	else if(isModel(target))
 	{
@@ -179,11 +294,8 @@ function Listener(func)
 }
 
 Listener.prototype.callback = null;
-
 Listener.prototype.suspended = null;
-
 Listener.prototype.suspend = function() { this.suspended = true; };
-
 Listener.prototype.resume = function() { this.suspended = false; };
 
 
@@ -247,6 +359,7 @@ WidgetListener.prototype.attachEvent = function(widget, event, callback)
 WidgetListener.prototype.handleEvent = function() { };
 
 
+
 /* TextBox listener. */
 function TextBoxListener(func, textbox)
 {
@@ -267,8 +380,25 @@ TextBoxListener.prototype.handleEvent = function(event)
 };
 
 
-/* Button listener. */
 
+/* Button listener. */
+function ButtonListener(func, button)
+{
+	// call base constructor
+	WidgetListener.call(this, func, button, ['onClick']);
+
+	// constructor
+}
+
+// inheritance
+ButtonListener.prototype = Object.create(WidgetListener.prototype);
+ButtonListener.prototype.constructor = ButtonListener;
+
+ButtonListener.prototype.handleEvent = function(event)
+{
+	if(event === 'onClick')
+		this.callback({ propertyName: 'click', newValue: null, oldValue: null });
+}; 
 
 
 
