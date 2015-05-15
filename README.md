@@ -298,3 +298,4 @@ param | `type` | Description.
  - interface support
 - a base class configurable object
 - a service for communicating with events between controllers / services
+- root scope ?
