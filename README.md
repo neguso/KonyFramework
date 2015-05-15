@@ -296,4 +296,5 @@ param | `type` | Description.
  - class inherit from
  - sintax sugar for defining methods, get/set properties
  - interface support
-- a configurable object
+- a base class configurable object
+- a service for communicating with events between controllers / services
